@@ -80,24 +80,3 @@ def update_skill(em_id):
     
     print(f" Kỹ năng mới của {emp['name']}: {emp['skill']}")
 
-# Hàm mới: cập nhật kỹ năng nhân viên bằng set
-def update_employee_skill(em_id, new_skill):
-    try:
-        emp = get_id(em_id)  # gọi lại hàm get_id
-        if not emp:
-            raise ValueError(f"Không tìm thấy nhân viên với id {em_id}")
-        
-        # Ép skill hiện tại về set (tuple -> set)
-        current_skills = set(emp["skill"])
-        
-        # Thêm kỹ năng mới
-        current_skills.add(new_skill)
-        
-        # Lưu lại dạng tuple để đồng nhất dữ liệu
-        emp["skill"] = tuple(current_skills)
-        
-        print(f"Đã cập nhật kỹ năng cho {emp['name']}: {emp['skill']}")
-    
-    except Exception as e:
-        print(f"Lỗi: {e}")
-
